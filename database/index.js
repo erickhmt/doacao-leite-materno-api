@@ -2,9 +2,9 @@ const Sequelize = require('sequelize');
 const dbConfig = require('./config/config');
 
 const User = require('./models/user');
-const PostosRetirada = require('./models/PostosRetirada');
-const Estoque = require('./models/Estoque');
-const Doacao = require('./models/Doacao');
+const PostosRetirada = require('./models/postosRetirada');
+const Estoque = require('./models/estoque');
+const Doacao = require('./models/doacao');
 
 let connection;
 
