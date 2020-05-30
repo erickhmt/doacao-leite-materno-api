@@ -6,7 +6,17 @@ const PostosRetirada = require('./models/PostosRetirada');
 const Estoque = require('./models/Estoque');
 const Doacao = require('./models/Doacao');
 
-const connection = new Sequelize('postgres://zlxgtkfsyblwcf:195027bb5f304cb4ea4b6faac6ab946db4d73506ff24b8c905b43706b407fa4c@ec2-52-70-15-120.compute-1.amazonaws.com:5432/d7tdb8slo0auua');
+let connection;
+if (process.env.DATABASE_URL) {
+    // the application is executed on Heroku ... use the postgres database
+    connection = new Sequelize(process.env.DATABASE_URL, {
+        dialect:  'postgres',
+        protocol: 'postgres'
+    })
+} else {
+    connection = new Sequelize('postgres://byrpwrxt:S5k54r6vucZqt7jEWhOstuVpmzD4CR_o@ruby.db.elephantsql.com:5432/byrpwrxt');
+
+}
 
 User.init(connection);
 PostosRetirada.init(connection);
