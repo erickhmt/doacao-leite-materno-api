@@ -2,25 +2,25 @@ const User = require('../../database/models/User');
 const bcrypt = require('bcryptjs');
 const config = require('../config/index');
 const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
 
 module.exports = {
     async SignUp({ email, password, name }) {
         const passwordHashed = bcrypt.hashSync(password);
 
         try {
-        const userRecord = await User.create({
-            password: passwordHashed,
-            email,
-            name
-        });
+            const userRecord = await User.create({
+                password: passwordHashed,
+                email,
+                name
+            });
+            console.log('teste, ', userRecord)
 
-        return {
-            user: {
-            email: userRecord.email,
-            name: userRecord.name
-            }
-        };
+            return {
+                user: {
+                email: userRecord.email,
+                name: userRecord.name
+                }
+            };
         } catch (err) {
         console.error(err);
         throw new Error("Falha ao Cadastrar usuário", err);

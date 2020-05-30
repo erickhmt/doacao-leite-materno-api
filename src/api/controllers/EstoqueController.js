@@ -12,6 +12,19 @@ router.get('/:postoRetiradaId/estoque', async (req, res) => {
     }
 });
 
+
+router.get('/:postoRetiradaId/estoque/:estoqueId/info', async (req, res) => {
+    try {
+        const postoRetiradaId = req.params.postoRetiradaId;
+        const estoqueId = req.params.estoqueId;
+        const response = await EstoqueService.Info(postoRetiradaId, estoqueId);
+
+        return res.json(response);
+    } catch (err) {
+        return res.status(500).json({ message: err.message });
+    }
+});
+
 router.post('/:postoRetiradaId/estoque', async (req, res) => {
     try {
         const response = await EstoqueService.Register(req.body);

@@ -1,24 +1,12 @@
 const Sequelize = require('sequelize');
 const dbConfig = require('./config/config');
 
-const User = require('./models/user');
-const PostosRetirada = require('./models/postosRetirada');
-const Estoque = require('./models/estoque');
-const Doacao = require('./models/doacao');
+const User = require('./models/User');
+const PostosRetirada = require('./models/PostosRetirada');
+const Estoque = require('./models/Estoque');
+const Doacao = require('./models/Doacao');
 
-let connection;
-
-console.log('------------------------------- ', process.env.DATABASE_URL);
-if (process.env.DATABASE_URL) {
-    // the application is executed on Heroku ... use the postgres database
-    connection = new Sequelize(process.env.DATABASE_URL, {
-        dialect:  'postgres',
-        protocol: 'postgres'
-    })
-} else {
-    connection = new Sequelize('postgres://byrpwrxt:S5k54r6vucZqt7jEWhOstuVpmzD4CR_o@ruby.db.elephantsql.com:5432/byrpwrxt');
-}
-console.log('------------------------------ connection ',connection);
+const connection = new Sequelize('postgres://ovdsqkek:kiRCloNRg6J_V_-MpMHSYtw0C8MfV5Ag@ruby.db.elephantsql.com:5432/ovdsqkek');
 
 User.init(connection);
 PostosRetirada.init(connection);

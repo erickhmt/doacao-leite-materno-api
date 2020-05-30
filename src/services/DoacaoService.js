@@ -1,8 +1,11 @@
 const Doacao = require('../../database/models/Doacao');
 
 module.exports = {
-    async ListAll() {
-        const doacao = await Doacao.findAll();
+    async ListByEstoque(estoqueId) {
+        const doacao = await Doacao.findAll({where: {
+            estoqueId
+        }});
+
         console.log('doacao: ', doacao);
 
         if (!doacao) {

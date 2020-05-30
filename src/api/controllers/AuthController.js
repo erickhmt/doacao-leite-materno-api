@@ -3,6 +3,7 @@ const AuthService = require('../../services/AuthService');
 
 router.post('/signup', async (req, res) => {
     try {
+        console.log('dados: ', req.body)
         const response = await AuthService.SignUp(req.body);
         return res.json(response);
     } catch (err) {

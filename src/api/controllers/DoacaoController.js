@@ -5,7 +5,7 @@ router.get('/:estoqueId/doacoes', async (req, res) => {
     try {
         const estoqueId = req.params.estoqueId;
 
-        const response = await DoacaoService.ListAll();
+        const response = await DoacaoService.ListByEstoque(estoqueId);
         return res.json(response);
     } catch (err) {
         return res.status(500).json({ message: err.message });

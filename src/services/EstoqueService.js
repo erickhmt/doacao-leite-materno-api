@@ -12,6 +12,20 @@ module.exports = {
         return estoque;
     },
 
+    async Info(postoRetiradaId, estoque) {
+        try {
+            // const estoque = await Estoque.findAll();
+
+            return {
+                totalDoadoras: 10,
+                capacidadeAtendimento: 55,
+                emFalta: 3,
+            };
+        } catch (err) {
+            throw new Error('Falhão ao buscar informações do estoque');
+        }
+    },
+
     async GetById(id) {
         const estoque = await Estoque.findByPk(id);
 
