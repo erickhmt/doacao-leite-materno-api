@@ -8,7 +8,7 @@ const Doacao = require('./models/Doacao');
 
 let connection;
 
-console.log('------------------------------ ', process.env.DATABASE_URL);
+console.log('------------------------------- ', process.env.DATABASE_URL);
 if (process.env.DATABASE_URL) {
     // the application is executed on Heroku ... use the postgres database
     connection = new Sequelize(process.env.DATABASE_URL, {
